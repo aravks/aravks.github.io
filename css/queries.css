@@ -1,0 +1,40 @@
+@media only screen and (max-width: 1200px) {
+    .main {
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    
+    .main {
+        position: absolute;
+        left: 20%;
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .main {
+        left: 18%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .main {
+        position: absolute;
+        left: 15%;
+        right: 15%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .main {
+        width: 300px;
+        position: absolute;
+        left: 0;
+        padding: 10px;
+        font-size: 13px;
+    }
+    .main span {
+        font-size: 50px;
+    }
+}

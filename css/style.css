@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+}
+
+body{
+    
+    background-color: #f1c40f;
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
+    font-size: 70px;
+    overflow: hidden;
+    text-align: center;
+}
+
+h1{
+    font-family: 'Special Elite', cursive;
+    font-weight: 400;
+}
+
+section {
+    margin-top: 250px;
+    display: block;
+}
+
+/* ===================================
+
+            FIGURE
+
+===================================== */
+
+
+
+
+/* ===================================
+
+            MAIN
+
+===================================== */
+
+.main {
+    position: absolute;
+    box-shadow: 2px 7px 7px #272822;
+    border-radius: 10px;
+    width: 500px;
+    padding: 20px;
+    left: 35%;
+    font-size: 20px;
+    
+    background-color: #272822;
+    color: #fff;
+}
+
+.main span {
+    font-size: 70px;
+    font-weight: 400;
+    
+}
