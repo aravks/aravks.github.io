@@ -18,10 +18,12 @@ body{
 h1{
     font-family: 'Special Elite', cursive;
     font-weight: 400;
+    
 }
 
-section {
-    margin-top: 250px;
+.header {
+    background-size: cover;
+    background-position: center;
     display: block;
 }
 
@@ -46,8 +48,10 @@ section {
     border-radius: 10px;
     width: 500px;
     padding: 20px;
-    left: 35%;
     font-size: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
     
     background-color: #272822;
     color: #fff;
