@@ -1,8 +1,11 @@
 * {
     margin: 0;
     padding: 0;
-    text-rendering: optimizeLegibility;
     box-sizing: border-box;
+}
+
+html {
+        text-rendering: optimizeLegibility;
 }
 
 body{
@@ -13,6 +16,10 @@ body{
     font-size: 70px;
     overflow: hidden;
     text-align: center;
+}
+
+.row {
+    max-width: 1140px;
 }
 
 h1{
@@ -27,12 +34,28 @@ h1{
     display: block;
 }
 
+
+
 /* ===================================
 
-            FIGURE
+            PARAGRAGH
 
 ===================================== */
 
+p {
+    white-space: nowrap;
+    font-size: 20px;
+}
+
+/* ===================================
+
+            BUTTON
+
+===================================== */
+
+button {
+    background: #d30d0d;
+}
 
 
 
@@ -52,13 +75,23 @@ h1{
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+    transition: font-size 0.5s;
     
     background-color: #272822;
     color: #fff;
 }
 
-.main span {
+.aravind {
     font-size: 70px;
     font-weight: 400;
+    transition: font-size 0.5s;
     
+}
+
+.main:hover {
+    font-size: 35%;
+}
+
+.aravind:hover {
+    font-size: 200%;
 }
