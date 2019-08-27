@@ -1,0 +1,66 @@
+@media only screen and (max-width: 1200px) {
+    .hero {
+        width: 900px!important ;
+        border-radius: 10px 70px!important ;    
+    }
+    h1 { font-size: 220%!important ; }
+    h2 { font-size: 180%!important ; }
+}
+@media only screen and (max-width: 1023px) {
+    .hero {
+        width: 750px!important ;
+        border-radius: 10px 70px!important ;    
+    }
+    nav {
+        position: relative;
+        right: 5%!important ;
+    }
+    
+}
+@media only screen and (max-width: 767px) {
+    header { overflow-x: hidden; }
+    nav { display: none!important ; }
+    i { display: inline-block!important ; }
+    .hero { width: 450px!important ; }
+    h1 { font-size: 180%!important ; }
+    h2 { font-size: 150%!important ; }
+    section { height: 150vh!important ; }
+    .pro { text-align: center!important ; }
+    .proj {
+        display: inline-block!important ;
+        background-color: rgba(0, 0, 0, 0.055);
+        height: 40vh!important ;
+        width: 80%!important ;
+
+    }
+    .hob {
+        margin: auto!important ;
+        display: block ;
+        width: 80%!important ;
+    }
+    .hobb {
+        border-radius: 10px ;
+        height: 6vh!important ;
+        width: 80%!important ;
+    }
+    .abt { width: 90% ; }
+}
+@media only screen and (max-width: 480px) {
+    header { overflow-x: hidden; }
+    .hero { 
+        width: 275px!important ; 
+        border-radius: 10px 50px!important ;
+    }
+    h1 { font-size: 120%!important ; }
+    h2 { font-size: 100%!important ; }
+    .about-pic {
+        height: 200px!important;
+    }
+    .abt { width: 95%!important ; }
+    h5 { font-size: 70%; }
+    h6 { 
+        word-wrap: break-word;
+        font-size: 70%;
+    }
+    .cr { font-size: 70%; }
+}
