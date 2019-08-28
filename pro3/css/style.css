@@ -23,30 +23,42 @@ header {
     height: 100vh;
 }
 .pro-pic {
-    position: relative;
-    top: 2%;
+    position: absolute;
+    top: 6%;
     left: 12%;
     height: 100px;
     border-radius: 100px;
 }
 nav {
+    position: absolute;
+    top: 0;
+    right: 10% ;
+}
+.main-nav {
+    float: right;
+    display: inline-block ;
     position: relative;
     right: 12%;
-    float: right;
-    margin: 28px 15px;
-    
+    margin: 40px 15px;
 }
-nav li{
-    float: left;
-    margin: 28px 15px;
+.main-nav li{
     display: inline-block;
+    margin: 28px 15px;
     transition: padding-top 0.2s, border-bottom 0.2s ;
 }
-nav li:hover {
+.main-nav li:hover {
     border-bottom: 2px solid #fff;
     border-radius: 7px;
     background: rgba(0, 0, 0, 0.521);
     padding-top: 5px;
+}
+.mob {
+    float: right ;
+}
+.mob-nav {
+    float: right ;
+    margin: 50px ;
+    display: none;
 }
 a {
     color: #fff ;
@@ -54,11 +66,7 @@ a {
 }
 a:hover {
     color: #fff;
-}
-.mob-nav {
-    float: right;
-    margin: 50px;
-    display: none ;
+    cursor: pointer ;
 }
 
 .hero {

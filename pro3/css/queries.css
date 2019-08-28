@@ -5,22 +5,35 @@
     }
     h1 { font-size: 220%!important ; }
     h2 { font-size: 180%!important ; }
+
 }
 @media only screen and (max-width: 1023px) {
     .hero {
         width: 750px!important ;
         border-radius: 10px 70px!important ;    
     }
-    nav {
-        position: relative;
-        right: 5%!important ;
-    }
     
 }
 @media only screen and (max-width: 767px) {
     header { overflow-x: hidden; }
-    nav { display: none!important ; }
-    i { display: inline-block!important ; }
+    .mob-nav {
+        display: inline-block!important ;
+    }
+    nav { 
+        right: 20%!important ; 
+    }
+    .main-nav {
+        position: absolute;
+        top: 40px!important ;
+        right: 50%!important ;
+        float: left!important ;
+        margin: 0!important ;
+    }
+    .main-nav li {
+        display: block!important ;
+        margin: 15px!important ;
+    }
+    
     .hero { width: 450px!important ; }
     h1 { font-size: 180%!important ; }
     h2 { font-size: 150%!important ; }
@@ -47,6 +60,8 @@
 }
 @media only screen and (max-width: 480px) {
     header { overflow-x: hidden; }
+    .main-nav { right: 0%!important ; }
+    .mob-nav { margin: 50px 20px!important ;}
     .hero { 
         width: 275px!important ; 
         border-radius: 10px 50px!important ;
@@ -56,7 +71,7 @@
     .about-pic {
         height: 200px!important;
     }
-    .abt { width: 95%!important ; }
+    .abt { width: 80%!important ; }
     h5 { font-size: 70%; }
     h6 { 
         word-wrap: break-word;
