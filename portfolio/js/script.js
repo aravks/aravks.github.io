@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
     /* Mobile nav */
-    $('.js--mob-nav').click(function(){
+    $('.navbar-toggler-icon').click(function(){
         
-        let nav = $('.js--main-nav');
+        let nav = $('navbar-collapse');
         
         nav.slideToggle(200);
         
