@@ -35,7 +35,6 @@ nav {
     right: 10% ;
 }
 .main-nav {
-    float: right;
     display: inline-block ;
     position: relative;
     right: 12%;
@@ -52,6 +51,7 @@ nav {
     background: rgba(0, 0, 0, 0.521);
     padding-top: 5px;
 }
+/*
 .mob {
     float: right ;
 }
@@ -60,6 +60,7 @@ nav {
     margin: 50px ;
     display: none;
 }
+*/
 a {
     color: #fff ;
     text-decoration: none!important ;
@@ -159,6 +160,69 @@ h1 {
 }
 .contact {
     background-color: rgba(83, 206, 66, 0.753) ;
+}
+.contact1 {
+    display: inline-block;
+    width: 65% ;
+}
+form {
+    text-align: center;
+}
+input {
+    display: inline-block ;
+    border: 2px solid #fff ;
+    border-radius: 10px ;
+    margin: 20px;
+    padding: 7px;
+    width: 90% ;
+    height: 50px;
+}
+textarea {
+    display: inline-block ;
+    border: 2px solid #fff ;
+    border-radius: 10px ;
+    margin: 20px;
+    padding: 7px;
+    width: 90% ;
+    height: 150px;
+}
+*:focus {
+    outline: none;
+}
+.cont {
+    border: 1px;
+    border-radius: 10px;
+    background-color: #272228;
+    width: 100px;
+    color: #fff;
+}
+.contact2 {
+    display: inline-block;
+    width: 30%;
+}
+.conta {
+    background: #fff;
+    width: 85%;
+    height: 450px;
+    padding: 10px;
+    border-radius: 20px;
+}
+.con {
+    margin: 10px auto;
+    width: 90%;
+    height: 75px;
+    background: #272228;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+.fas {
+    width: 20px;
+    height: 20px;
+}
+span { 
+    font-family: 'Livvic', sans-serif;
+    font-size: 70%; 
 }
 footer {
     padding: 50px ;

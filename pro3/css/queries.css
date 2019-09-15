@@ -12,7 +12,17 @@
         width: 750px!important ;
         border-radius: 10px 70px!important ;    
     }
-    
+    .contact { 
+        height: 160vh!important ; 
+        text-align: center ;
+    }
+    .contact1, .contact2 {
+        display: block ;
+        width: 85%!important ;
+    }
+    .conta {
+        margin: 0 auto;
+    }
 }
 @media only screen and (max-width: 767px) {
     header { overflow-x: hidden; }
@@ -78,4 +88,5 @@
         font-size: 70%;
     }
     .cr { font-size: 70%; }
+    span { display: none ; }
 }
