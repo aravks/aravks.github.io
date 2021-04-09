@@ -76,6 +76,10 @@ li {
   color: red;
 }
 
+p {
+  margin: 0;
+}
+
 .hidden {
   visibility: hidden;
 }
