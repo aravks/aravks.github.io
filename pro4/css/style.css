@@ -19,6 +19,7 @@ h1 {
     background-color:  #393e46;
     color: #fff;
     border-radius: 20px;
+    box-shadow: 0 0 15px -2px #444;
 }
 
 .response {
