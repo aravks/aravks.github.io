@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eee;
+    text-align: center;
+}
+
+h1 {
+    margin: 25px;
+}
+
+.content {
+    margin: 15px;
+    padding: 25px;
+    background-color:  #393e46;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.response {
+    padding: 25px;
+    background-color: #25D366;
+    color: #000;
+}
+
+label {
+    width: 15%;
+    text-align: left;
+    display: inline-block;
+}
+
+input, textarea, select {
+    width: 50%;
+    border-radius: 5px;
+}
+
+textarea {
+    vertical-align: top;
+}
+
+button {
+    width: 50%;
+    font-size: 15px;
+    margin: 5px;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+hr {
+    background-color: white;
+}
+
+li {
+    list-style-type: none;
+}
+
+.chatList {
+    background-color: #eee;
+    color: #fff;
+    margin: 10px;
+    padding: 5px;
+    border: 3px solid #000;
+    box-shadow: 0px 2px 5px #000;
+    border-radius: 5px;
+}
+
+/* ------------------ */
+/* Additional Feature */
+/* ------------------ */
+
+.chatList:nth-child(4n) {
+    background: linear-gradient(
+      90deg,
+      rgb(12, 255, 65) 0%,
+      rgb(250, 225, 0) 100%
+    );
+  }
+  .chatList:nth-child(4n + 1) {
+    background: linear-gradient(
+      90deg,
+      rgba(93, 12, 255, 1) 0%,
+      rgba(155, 0, 250, 1) 100%
+    );
+  }
+  .chatList:nth-child(4n + 2) {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 12, 241, 1) 0%,
+      rgba(250, 0, 135, 1) 100%
+    );
+  }
+  .chatList:nth-child(4n + 3) {
+    background: linear-gradient(
+      90deg,
+      rgba(20, 159, 255, 1) 0%,
+      rgba(17, 122, 255, 1) 100%
+    );
+  }
