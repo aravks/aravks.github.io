@@ -42,7 +42,7 @@ textarea {
     vertical-align: top;
 }
 
-button {
+#confirm, #cancel {
     width: 50%;
     font-size: 15px;
     margin: 5px;
