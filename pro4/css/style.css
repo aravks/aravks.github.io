@@ -72,6 +72,14 @@ li {
     border-radius: 5px;
 }
 
+.emsg, .emsg1, .emsg2 {
+  color: red;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 /* ------------------ */
 /* Additional Feature */
 /* ------------------ */

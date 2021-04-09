@@ -42,6 +42,7 @@
                     <form action="">
                         <label for="">Name</label>
                         <input id="data" type="text" placeholder="Type your Name" required> <br>
+                            <p><span class="emsg hidden">Please Enter a Valid Name</span></p>
                         <br>
 
                         <label for="">Date of Birth</label>
@@ -57,11 +58,13 @@
                         <br>
 
                         <label for="">E-mail</label>
-                        <input type="email" placeholder="Type your E-mail" required> <br>
+                        <input id='email' type="email" placeholder="Type your E-mail" required> <br>
+                            <p><span class="emsg1 hidden">Please enter a valid email</span></p>
                         <br>
 
                         <label for="">Phone</label>
-                        <input type="number" placeholder="Type your Phone" required> <br>
+                        <input id="phone" type="text" placeholder="Type your Phone" required> <br>
+                            <p><span class="emsg2 hidden">Please enter a valid phone number</span></p>
                         <br>
 
                         <label for="">Address</label>
@@ -75,7 +78,7 @@
             </div>
             <div class="col-md">
                 <div class="content response">
-                    <h3>Team members<span class="badge badge-light" id="badge">0</span></h3>
+                    <h3>Team members <span class="badge badge-light" id="badge">0</span></h3>
                     <ul id="chat">
                     </ul>
                 </div>
