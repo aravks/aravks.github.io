@@ -1,0 +1,24 @@
+1.document ready or onload
+2.call empty alert
+3.call alert with values
+3a.directly pass values
+3b.try static values, then dynamic
+4.assign string to array
+5.pass each value
+6.assign to selected
+
+1. values are passing on document.ready
+2. empty alert works
+3. alert with values works
+4. directly passing values didn't work
+5. static values not work
+6. Referred the two links
+	(In First one for-loop is not completing)
+	(Second one did not work)
+
+var data = $("#Eform").val();
+var valArr = data.split(",");
+var i = 0, size = valArr.length;
+for (i; i < size; i++) {
+	$('#myCountries1').multiselect('select', valArr[i]);
+}

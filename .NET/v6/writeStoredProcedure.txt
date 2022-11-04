@@ -1,0 +1,16 @@
+tbdRoleFormAccess
+
+roleformaccessid int auto inc prikey
+roleid int
+formid varch , separated string
+
+admin
+role pro emp
+
+manager
+role pro
+
+First entry - Role id 1, Form id 1,2
+Values Admin, Dashboard, Role
+
+Two row join

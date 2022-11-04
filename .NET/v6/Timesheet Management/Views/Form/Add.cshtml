@@ -1,0 +1,275 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
+
+@{
+    ViewBag.Title = "Add";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Insert</title>
+    <style>
+        .can {
+            color: black;
+            border-radius: 5px;
+            font-size: 18px;
+            width: 150px;
+            height: 55px;
+            background-color: orange;
+            padding-top: 13px;
+            border: 1px solid black;
+        }
+
+        .rle {
+            width: 300%;
+            border: none;
+            border-bottom: 1px solid black;
+            outline: none;
+        }
+
+        #myCountries {
+            width: 300%;
+            border: none;
+            border-bottom: 1px solid black;
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #f2f2f2;">
+    <br />
+
+    <br />
+    <div>
+        @{
+            if (@ViewBag.message != "Edit")
+            {
+                <h1 style="float: left; color: red; text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc; margin-left: 10px;">INSERT FORM</h1>
+                <center style="margin-top:4%;width:80%;margin-left:25%;border-radius:20px;background-color:white;position:fixed;top:20%;height:55%;left:-200px;box-shadow: 5px 10px lightgrey;">
+                    <form id="frmDetail" method="post" action="@Url.Action("InsertRecord")">
+                        <div class="row">
+                            <div style="float:right;position:fixed;top:40%;left:20%">
+                                <h3 class="text-dark" style="float:left;top:20%;">Role:</h3>
+                                <br /><br /><br />
+                                @Html.DropDownList("ROID", ViewBag.roleList as SelectList, "Select",new { @required=true, @class = "rle" })
+                                <br>
+                                <br>
+                            </div>
+                            <div style="float:left;position:fixed;top:45%;left:55%">
+                                @*<input type="button" id="" value="Forms" style="width:100%" />
+                                    <br />*@
+                                <select id="myCountries" multiple="multiple" required=required>
+
+                                    @if (ViewBag.FormList != null)
+                                    {
+                                        foreach (var item in ViewBag.FormList)
+                                        {
+                                            if (item.Text != null)
+                                            {
+                                                <option value="@item.Value">
+                                                    @item.Text
+                                                </option>
+
+                                            }
+                                        }
+                                    }
+                                </select>
+
+                                <input id="Eform" name="Eform" />
+                                <input id="hndID" name="hndID" />
+
+                                @*@Html.DropDownList("Eform", ViewBag.FormList as SelectList,new { @multiple="multiple"})*@
+
+                            </div>
+                        </div>
+
+                        @{
+                            if (ViewBag.message != null)
+                            {
+                                <div class="alert alert-danger" role="alert">@ViewBag.message</div>
+                            }
+                        }
+                        <input class="confirm bg-primary" type="submit" value="Submit" name="action" style="border-radius:5px;font-size:18px;background-color:blue;width:150px;float:left;position:fixed;left:42%;height:55px;top:60%;color:white">
+                        @Html.ActionLink("Cancel", "index", "Role", new { @class = "can" })
+                    </form>
+                </center>
+            }
+            else
+            {
+                <h1 style="float: left; color: red; text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc; margin-left: 10px;">EDIT</h1>
+                <center style="margin-top:4%;width:80%;margin-left:25%;border-radius:20px;background-color:white;position:fixed;top:20%;height:55%;left:-200px;box-shadow: 5px 10px lightgrey;">
+                    <form id="frmDetail" method="post" action="@Url.Action("InsertRecord")">
+                        <div class="row">
+                            <div style="float:right;position:fixed;top:40%;left:20%">
+                                <h3 class="text-dark" style="float:left;top:20%;">Role:</h3>
+                                <br /><br /><br />
+                                @Html.DropDownList("ROID", ViewBag.roleList as SelectList, new { @class = "rle" })
+                                <br>
+                                <br>
+                            </div>
+
+                            <div style="float:left;position:fixed;top:45%;left:55%">
+                                @*<input type="button" id="" value="Forms" style="width:100%" />
+            <br />*@
+                                <select id="myCountries" multiple="multiple" required=required>
+
+                                    @if (ViewBag.FormList != null)
+                                    {
+                                        foreach (var item in ViewBag.FormList)
+                                        {
+                                            if (item.Text != null)
+                                            {
+                                                <option value="@item.Value" Selected="@item.Selected">
+                                                    @item.Text
+                                                </option>
+
+                                            }
+                                        }
+                                    }
+                                </select>
+
+                                <input value="@Model.Rows[0]["Form_id"]" id="Eform" name="Eform" />
+                                <input value="@Model.Rows[0]["RoleFormAccessId"]" id="hndID" name="hndID" />
+                                @*@Html.DropDownList("Eform", ViewBag.FormList as SelectList,new { @multiple="multiple"})*@
+
+                            </div>
+
+                        </div>
+                        <br /><br />
+
+
+                        <input class="confirm bg-primary" type="submit" value="Submit" name="action" style="border-radius:5px;font-size:18px;background-color:blue;width:150px;float:left;position:fixed;left:42%;height:55px;top:60%;color:white" />
+                        @Html.ActionLink("Cancel", "index", "Form", new { @class = "can" })
+                    </form>
+                </center>
+            }
+        }
+
+    </div>
+
+
+</body>
+
+</html>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap-multiselect.js"></script>
+<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var data = $("#Eform").val();
+
+        var valArr = data.split(",");
+
+        var i = 0, size = valArr.length;
+        for (i; i < size; i++) {
+            $('#myCountries').multiselect('select', valArr[i]);
+        }
+
+        //  for (i = 0; i < 4; i++) { alert(i); }
+
+        //$("myCountries").val(2, 3);
+
+        //$("myCountries").val([2, 3]);
+
+        //var valArr = [1, 2, 3, 4, 5];
+        //alert(JSON.stringify(valArr));
+        //alert(valArr.join("\n"));
+        //i = 1, size = valArr.length;
+        //for (i; i < size; i++) {
+        //    alert(i + " " + " " + size);
+        //    $("#myCountries1").multiselect("widget").find(":checkbox[value='" + valArr[i] + "']").attr("checked", "checked");
+        //    $("#myCountries1 option[value='" + valArr[i] + "']").attr("selected", 1);
+        //    $("#myCountries1").multiselect("refresh");
+        //    alert(i + " "  + " " + size);
+        //}
+
+        //$('#dog').on('click', function () {
+        //    alert("Click");
+        //    var selected = $("#myCountries1 option:selected").map(function () { return this.value }).get();
+        //    selected.push(2);// 2 is the val I set for Dog
+        //    alert(selected);
+        //    $('#myCountries1').val(selected);
+        //});
+
+    });
+
+
+    $(function () {
+        $('#myCountries').multiselect({
+            includeSelectAllOption: true,         /*To enable the Select all Option*/
+            selectAllValue: 'multiselect-all',     /*The value used for the select all option can be configured using the selectAllValue*/
+            enableFiltering: true,   /*A filter input will be added to dynamically filter all the options*/
+            enableCaseInsensitiveFiltering: true,  /*To enable Case Insenstitive Filtering (Upper and Lower Case Letters)*/
+            maxHeight: '300',
+            buttonWidth: '235',
+        });
+
+        //$('#myCountries1').multiselect({
+        //    includeSelectAllOption: true,         /*To enable the Select all Option*/
+        //    selectAllValue: 'multiselect-all',     /*The value used for the select all option can be configured using the selectAllValue*/
+        //    enableFiltering: true,   /*A filter input will be added to dynamically filter all the options*/
+        //    enableCaseInsensitiveFiltering: true,  /*To enable Case Insenstitive Filtering (Upper and Lower Case Letters)*/
+        //    maxHeight: '300',
+        //    buttonWidth: '235',
+        //});
+
+    });
+
+
+    $("#myCountries").change(function () {
+        var selected = $("#myCountries option:selected");    /*Current Selected Value*/
+        var message = "";
+        var arrSelected = [];      /*Array to store multiple values in stack*/
+        selected.each(function () {
+            arrSelected.push($(this).val());    /*Stack the Value*/
+            message += $(this).val() + ",";
+
+        });
+        message = message.slice(0, -1);
+        document.getElementById("Eform").value = message;
+    });
+
+    //$("#myCountries1").change(function () {
+    //    var selected = $("#myCountries1 option:selected");    /*Current Selected Value*/
+    //    var message = "";
+    //    var arrSelected = [];      /*Array to store multiple values in stack*/
+    //    selected.each(function () {
+    //        arrSelected.push($(this).val());    /*Stack the Value*/
+    //        message += $(this).val() + ",";
+
+    //    });
+    //    message = message.slice(0, -1);
+    //    document.getElementById("Eform").value = message;
+    //});
+
+
+    //$("#myCountries1").onload(function () {
+    //    var selected = $("#myCountries option");    /*Current Selected Value*/
+    //    var message = document.getElementById("Eform").value;
+    //    var arrSelected = [message];      /*Array to store multiple values in stack*/
+    //    selected.each(function (index) {
+    //        alert(arrSelected);
+    //        if (arrSelected.indexOf(index) > 0) {
+    //            $(this).addClass("active");
+    //            arrSelected.push($(this).val());    /*Stack the Value*/
+    //            message -= $(this).val() + ",";
+    //        }
+    //    });
+    //    message = message.slice(0, -1);
+    //    document.getElementById("Eform").value = message;
+    //});
+</script>

@@ -1,0 +1,113 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model Timesheet_Management.Models.EMPModel
+
+
+@{
+    ViewBag.Title = "EditView";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>$(function () { $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }); });</script>
+    <title>Employee</title>
+</head>
+
+<body class="bg-create">
+    <br />
+    <h2 class="float-left text-dark">Employee</h2>
+    <div class="content ml-3">
+                <form id="frmDetail" method="post" action="@Url.Action("EmployeeInsertRecord")">
+                    <div class="row">
+                        <div class="col-6 half">
+                            <label>Name<span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(Model => Model.Ename, new { @placeholder = "Enter the Employee's Name", @class = "", @required = true })
+                            <br>
+                            <br>
+
+                            <label>Role<span class="text-danger">*</span></label>
+                            @Html.DropDownListFor(Model => Model.RID, ViewBag.roleList as SelectList, "-- Select One --", new { @required = true })
+                            <br>
+                            <br>
+
+                            <label>Email<span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(Model => Model.Email, new { @placeholder = "Enter the Email", @class = "", @required = true })
+                            <br>
+                            <br>
+
+                            <label>Address</label>
+                            @Html.TextBoxFor(Model => Model.Eaddr, new { @placeholder = "Enter the Address", @class = "" })
+                            <br>
+                            <br>
+
+
+                        </div>
+                        <div class="col-6 half">
+                            <label>DOB<span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(Model => Model.Edob, Model.Edob.ToShortDateString(), new { @id = "datepicker", @required = true })
+                            <br>
+                            <br>
+
+                            <label>Gender<span class="text-danger">*</span></label>
+                            @Html.DropDownListFor(Model => Model.Egend, ViewBag.genderList as SelectList, "-- Select One --")
+                            <br>
+                            <br>
+
+                            <label>Phone</label>
+                            @Html.TextBoxFor(Model => Model.Ephone, new { @placeholder = "Enter the Phone number", @class = "" })
+                            <br>
+                            <br>
+
+                            <label>Password<span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(Model => Model.Epass, new { @placeholder = "Enter the Password", @class = "", @required = true })
+                            <br>
+                            <br>
+
+
+                            @Html.ListBoxFor(Model => Model.Formid, ViewBag.formList as SelectList)
+                        </div>
+                    </div>
+                    @Html.TextBoxFor(Model => Model.EID, new { @type = "hidden", @required = true })
+
+                    
+                    @{
+                        if (ViewBag.role != null)
+                        {
+                            <div class="alert alert-danger text-center" role="alert">@ViewBag.role</div>
+                        }
+                        if (ViewBag.email != null)
+                        {
+                            <div class="alert alert-danger text-center" role="alert">@ViewBag.email</div>
+                        }
+                        if (ViewBag.dob != null)
+                        {
+                            <div class="alert alert-danger text-center" role="alert">@ViewBag.dob</div>
+                        }
+                        if (ViewBag.gender != null)
+                        {
+                            <div class="alert alert-danger text-center" role="alert">@ViewBag.gender</div>
+                        }
+                    }
+                    
+                    <div class="text-center">
+                        <input class="btn btn-primary confirm w-25" type="submit" value="Submit" name="action" />
+                        <a href="~/Register/Index" class="btn btn-dark confirm w-25">Cancel</a>
+                    </div>
+                </form>
+          
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+
+<body class="bg-home">
+    <br />
+    <h2 class="text-white">Employee List</h2>
+        @Html.ActionLink("Add New Record", "EmployeeInsert", null, new { @class = "float-right btn btn-primary" })
+        <br>
+        <br>
+
+        <form method="post" name="Display" class="ml-3">
+            @{
+                if (Model.Rows.Count > 0)
+                {
+                    <table class="table table-striped table-hover bg-light text-dark" border="1">
+                        <thead class="bg-dark text-white text-center">
+                            <tr>
+                                <th>Name</th>
+                                <th>DOB</th>
+                                <th>Role</th>
+                                <th>Gender</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th colspan="2">Action</th>
+                            </tr>
+                        </thead>
+                        @foreach (DataRow dr in Model.Rows)
+                        {
+                            <tr>
+                                <td>@dr["emp_name"].ToString() </td>
+                                <td>@Convert.ToDateTime(@dr["emp_dob"]).ToShortDateString() </td>
+                                <td>@dr["role_name"].ToString() </td>
+                                <td>@dr["gender_name"].ToString() </td>
+                                <td>@dr["emp_email"].ToString() </td>
+                                <td>@dr["emp_phone"].ToString() </td>
+                                <td>@dr["emp_address"].ToString() </td>
+                                <td>@Html.ActionLink("Edit ", "EmployeeInsert", new { EmpID = dr["emp_id"].ToString(), RID = dr["role_id"].ToString(), Egend = dr["gender_id"].ToString() }, new { @class = "btn btn-success" })</td>
+                                <td>@Html.ActionLink("Delete", "EmployeeDelete", new { EmpID = dr["emp_id"].ToString() }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you want to delete?');" })</td>
+                            </tr>
+
+                        }
+                    </table>
+                    <br />
+                }
+                else
+                {
+                    <span class="text-white"> No records found!!</span>
+                }
+            }
+        </form>
+</body>
+
+</html>

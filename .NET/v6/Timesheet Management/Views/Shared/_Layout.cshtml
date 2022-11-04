@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            @Html.ActionLink("GP-TMS", null, null, new { @class = "navbar-brand" })
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="~/Content/img/user.jpg" alt="user" />
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Update password</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+    </nav>
+    <div class="row w-100">
+        <div class="col-2 bg-light side">
+            <br />
+            <label class="side-list">@Html.ActionLink("Dashboard", "Dashboard", null, null, new { @class = "side-list" })</label> <br />
+            <label class="side-list">Role</label> <br />
+            <label class="side-list">Project</label> <br />
+            <label class="side-list">@Html.ActionLink("Employee", "Index", null, null, new { @class = "side-list" })</label> <br />
+            <label class="side-list">Emp - Prj Mapping</label> <br />
+            <label class="side-list">Timesheet Mgmt</label>
+        </div>
+        <div class="col-10">
+            @RenderBody()
+        </div>
+    </div>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+@{
+    ViewBag.Title = "index";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+
+
+    <style>
+        thead {
+            text-align: center;
+            text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 0px -4px 10px rgba(255,255,255,0.3);
+            background-color: dimgray;
+            font-size: 20px;
+            font-display: block;
+            color: white;
+        }
+
+        tr {
+            text-align: center;
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+
+            tr:hover {
+                background-color: dimgrey;
+                cursor: pointer;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2
+            }
+
+                tr:nth-child(even):hover {
+                    background-color: dimgrey;
+                    cursor: pointer;
+                }
+
+        .tab {
+            text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 0px -4px 10px rgba(255,255,255,0.3);
+        }
+
+        .lin {
+            float: right;
+            font-size: 30px;
+            left: 1250px;
+            position: fixed;
+            color: cornflowerblue;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #f2f2f2;">
+
+
+    <form method="post" name="Display" style="margin-top:10px;">
+        <h1 style="float: left; color: red; text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc; margin-left: 10px;">
+            FORM DETAILS
+            @Html.ActionLink("Add New Record", "Insert", "Form", new { @class = "lin" })
+        </h1>
+        <br /><br /><br />
+
+        @{
+            if (Model.Rows.Count > 0)
+            {
+                <table border="1" align="center" cellpadding="8" style="background-color: lightgray;font-size: 18px;margin-left: 10px;box-shadow: 5px 10px lightgray;" width="97%" height="100%">
+                    <thead>
+                        <tr>
+
+                            <td>
+                                ROLE NAME
+                            </td>
+                            <td>
+                                FORM NAME
+                            </td>
+
+                            <td colspan="2">ACTION</td>
+                        </tr>
+                    </thead>
+                    @foreach (DataRow dr in Model.Rows)
+                    {
+                        <tr>
+
+                            <td>@dr["Role_name"].ToString() </td>
+                            <td>@dr["Form_name"].ToString() </td>
+
+                            <td>@Html.ActionLink("Edit", "Insert", new { RoleFormAccessId = dr["RoleFormAccessId"].ToString(),ROID = dr["Role_id"].ToString() ,Eform=dr["Form_id"].ToString() }, new { @class = "tab" })</td>
+                            <td>@Html.ActionLink("Delete", "Delete", new {RoleFormAccessId = dr["RoleFormAccessId"].ToString()}, new { onclick = "return confirm('Are you sure you want to delete?');" })</td>
+                        </tr>
+
+                    }
+
+                </table>
+
+                <br />
+            }
+            else
+            {
+                <span> No records found!!</span>
+            }
+        }
+
+    </form>
+    <script src="~/Scripts/main.js"></script>
+
+
+
+</body>
+
+</html>
+
+

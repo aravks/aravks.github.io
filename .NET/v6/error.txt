@@ -1,0 +1,28 @@
+1. System.NullReferenceException
+  HResult=0x80004003
+  Message=Object reference not set to an instance of an object.
+  Source=App_Web_jkz1c2v2
+  StackTrace:
+   at ASP._Page_Views_Register_Index_cshtml.Execute() in D:\B\GPG\v6\Timesheet Management\Views\Register\Index.cshtml:line 23
+
+  Solution: Create Model object in the controller action.
+	
+	EMPModel model = new EMPModel();
+	DataTable dt = model.GetAllEmployees();
+	return View("Index", dt);
+
+2. CS0116 - A namespace cannot directly contain members such as fields or methods.
+
+  Solution: Define action within class.
+
+3. CS0103 - The name 'GetAllRole' does not exist in the current context.
+
+  Solution: Declare action named 'GetAllRole'.
+
+4. System.InvalidOperationException: 'There is no ViewData item of type 'IEnumerable<SelectListItem>' that has the key 'projname'.'
+
+  Solution: Change key name correctly.
+
+5. There is no ViewData item of type 'IEnumerable<SelectListItem>' that has the key 'RID'.
+
+  Solution: Add ViewRoleList(RID) before (create, dt).
