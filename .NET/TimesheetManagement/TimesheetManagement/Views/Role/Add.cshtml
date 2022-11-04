@@ -1,0 +1,154 @@
+﻿
+@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+@{ ViewBag.Title = "EditView";
+    Layout="~/Views/_IndexLayout.cshtml";}
+
+
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap10.css" rel="stylesheet" />
+    <title>Insert</title>
+    <style>
+        .can {
+            color: white;
+            border-radius: 5px;
+            font-size: 24px;
+            width: 150px;
+            float: left;
+            position: fixed;
+            left: 55%;
+            height: 55px;
+            top: 60%;
+            background-color: red;
+            padding-top: 13px;
+            /* border: 1px solid black;*/
+            border-radius: 15px;
+            padding: 15px 25px;
+            text-align: center;
+            outline: none;
+            border: none;
+        }
+
+            .can:hover {
+                outline: none;
+                text-decoration: none;
+                color: white;
+            }
+
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid black;
+        }
+    </style>
+    <script src="~/Scripts/main.js"></script>
+</head>
+<body style="background-color: #f2f2f2;font-family:'Times New Roman'">
+    <div>
+        @{ if (@ViewBag.message != "Edit")
+            {
+<h1 style="float: left; color: red; text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc; margin-left: 10px;">ROLE</h1>
+                <center style="margin-top:4%;width:80%;margin-left:25%;border-radius:20px;background-color:white;
+                position:fixed;top:20%;height:55%;left:-200px;box-shadow: 5px 10px lightgrey;">
+                    <form id="frmDetail" method="post" action="@Url.Action("InsertRecord")">
+                        <span style="float:left;margin-top:45px;margin-left:40px;">
+                            <label style="font-size: 20px;position:fixed;left:18%;top:40%"><b>Role Name:<span style="color:red">*</span></b></label><br /><br />
+                            <input type="text" name="txtName" required="" style="width:500px;height:25px;position:fixed;left:18%;top:48%;font-size:1.3rem; outline: 0;"
+                                   placeholder="Role name" />
+                        </span>
+                        <br>
+                        <br>
+                        <span style="float:right;margin-bottom:200px;margin-right:30px">
+                            <label style=" margin-left:5px;font-size:20px;position:fixed;left:55%;top:40% "><b>Description:</b></label><br />
+                            <input type="text" name="description" style="        width: 500px; outline: 0;
+                                height: 25px;
+                                margin-left: 5px;
+                                font-size: 1.3rem;position:fixed;
+                                left: 55%;
+                                top: 48%" placeholder="Description" />
+                        </span>
+                        <br>
+                        <br>
+                        <br />
+                        @{ if (ViewBag.message != null)
+                            {
+            <div class="alert alert-danger" role="alert"
+                 style=" text-align:center;margin-top:100px;position:absolute;width:1080px;margin-left:90px">@ViewBag.message</div> } }
+                        <br /><br><br>
+                        <br>
+                        <input type="submit" value="Submit" name="action" style="border-radius:15px;font-size:24px;cursor:pointer;
+                            background-color:blue;width:150px;float:left;position:fixed;left:41%;height:55px;top:60%;color:white" />
+                        @Html.ActionLink("Cancel", "index", "Role", null, new { @class = "can" })
+                    </form>
+                </center> }
+                            else
+                            {
+                <h1 style="float: left; color: red; text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc; margin-left: 10px;">ROLE</h1>
+
+
+
+                                <center style="margin-top:4%;width:80%;margin-left:25%;border-radius:20px;background-color:white;
+                    position:fixed;top:20%;height:55%;left:-200px;box-shadow: 5px 10px lightgrey;">
+
+
+
+                                    <form id="frmDetail" method="post" action="@Url.Action("InsertRecord")">
+                                        <span style="float:left;margin-top:45px;margin-left:40px;">
+                                            <label style="font-size: 20px;position:fixed;left:18%;top:40%"><b>Role Name:<span style="color:red">*</span></b></label><br /><br />
+                                            <input type="text" name="txtName" required="" value="@Model.Rows[0]["Role_name"]" style="width: 500px; outline: 0;
+                                            height: 25px;
+                                            position: fixed;
+                                            left: 18%;
+                                            top: 48%;
+                                            font-size: 1.3rem;" placeholder="Role name" />
+                                        </span>
+                                        <br>
+                                        <br>
+
+                                        <span style="float:right;margin-bottom:200px;margin-right:30px">
+                                            <label style=" margin-left:5px;font-size:20px;position:fixed;left:55%;top:40%  "><b>Description:</b></label><br /><br />
+                                            <input type="text" name="description" value="@Model.Rows[0]["Role_description"]" style="width: 500px; outline: 0;
+                                    height: 25px;
+                                    margin-left: 5px;
+                                    position: fixed;
+                                    left: 55%;
+                                    top: 48%;
+                                    font-size: 1.3rem;" placeholder="Description" />
+                                        </span>
+                                        <br>
+                                        <br /><input type="hidden" name="hdnID" value="@Model.Rows[0]["Role_id"]" />
+
+                                        @{
+                                            if (ViewBag.role != null)
+                                            {
+                            <div class="alert alert-danger" role="alert"
+                                 style=" text-align:center;margin-top:100px;position:absolute;width:1080px;margin-left:90px">@ViewBag.role</div> }
+
+                                        }
+
+                                        <br>
+                                        <br><br />
+                                        <br>
+
+
+
+
+                                        <input type="submit" value="Submit" name="action" style="border-radius:15px;
+                                    cursor:pointer;font-size:24px;background-color:blue;width:150px;float:left;position:fixed;left:41%;height:55px;top:60%;color:white" />
+                                        @Html.ActionLink("Cancel", "index", "Role", null, new { @class = "can" })
+                                    </form>
+                                </center> } }
+
+
+
+    </div>
+</body>
+</html>

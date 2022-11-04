@@ -1,0 +1,158 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Table";
+    Layout = "~/Views/_IndexLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap10.css" rel="stylesheet" />
+    <title>User home</title>
+    <style>
+
+                body {
+                    background-color: #f2f2f2;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-size: 100% 100%;
+                    font-family: 'Times New Roman';
+                }
+
+                h1 {
+                    float: left;
+                    color: red;
+                    text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc;
+                    margin-left: 10px;
+                }
+
+                table {
+                    width: 100%;
+                }
+
+                .table-fill {
+                    width: 97%;
+                }
+                /* th {
+                    background-color: #FF003E;
+                    color: white;
+                    font-size: 21px;
+                    text-align: center;
+                    border: 1px solid white;
+                    height: 70px;
+                }
+               td {
+                    background-color: #FFCCD9;
+                    color: blue;
+                    border: 1px solid #FF003E;
+                    height: 60px;
+                    column-width: 80px;
+                    text-align: center;
+                    font-size: 20px;
+                }
+
+                .bar {
+                    padding-left: 980px;
+                }
+
+                tr:hover td {
+                    background-color: transparent;
+                    color: #FF003E;
+                    border: 1px solid blue;
+                }*/
+                thead {
+                    text-align: center;
+                    text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 0px -4px 10px rgba(255,255,255,0.3);
+                    background-color: dimgray;
+                    font-size: 20px;
+                    font-display: block;
+                    color: white;
+                }
+
+                tr {
+                    text-align: center;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                }
+
+                    tr:hover {
+                        background-color: dimgrey;
+                        cursor: pointer;
+                    }
+
+                    tr:nth-child(even) {
+                        background-color: #f2f2f2
+                    }
+
+                        tr:nth-child(even):hover {
+                            background-color: dimgrey;
+                            cursor: pointer;
+                        }
+
+        .topadd {
+            /* background-color: transparent;
+                    border: 2px solid transparent;*/
+            height: 50px;
+            /*            font-family: 'Times New Roman'; */
+            padding: 5px;
+            float: right;
+            font-size: 30px;
+            margin-top: -4px;
+            /*            margin-left:10px;*/
+            color: cornflowerblue;
+            margin-left: -30px;
+            text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc;
+        }
+    </style>
+</head>
+
+<body style="font-family: 'Times New Roman'"><br>
+    <form method="post" name="Display">
+        <h1 class="ml2" style="text-align: left;font-size:30px;">EMPLOYEE PROJECT LIST</h1>
+        <div class="bar">
+          @Html.ActionLink("Add New User", "SheetInsert",null,new { @class = "topadd" })
+        </div>
+        <br /><br>
+        @{
+            if (Model.Rows.Count > 0)
+            {
+                <br><br>
+                <table class="table table-striped table-hover bg-light text-dark" border="1" align="center" cellpadding="8" style="background-color: lightgray;font-size: 18px;margin-left: 10px;box-shadow: 5px 10px lightgray;"width="97%" height="100%" class="table-fill">
+                    <thead class="bg-dark text-white text-center">
+                        <tr >
+                            <th>EMPLOYEE NAME</th>
+                            <th>PROJECT NAME</th>
+                            <th colspan= 2>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+
+                        @foreach (DataRow dr in Model.Rows)
+                        {
+                        <tr>
+                            <td>@dr["emp_name"].ToString() </td>
+                            <td>@dr["ProjectName"].ToString() </td>
+                            <td>@Html.ActionLink("Edit ", "SheetInsert", new { empproID = dr["emppromap_id"].ToString(),projname=dr["ProjectId"],empname=dr["emp_id"]  }, new { @class = "Tab" })</td>
+                            <td>@Html.ActionLink("Delete", "Delete", new { empproID = dr["emppromap_id"].ToString() }, new { onclick = "return confirm('Confirm Delete?');" })</td>
+
+                        </tr>
+
+                        }
+                    </tbody>
+                </table>
+                <br />
+            }
+            else
+            {
+                <span> No records found!!</span>
+            }
+        }
+        <br />
+    </form>
+</body>
+
+</html>

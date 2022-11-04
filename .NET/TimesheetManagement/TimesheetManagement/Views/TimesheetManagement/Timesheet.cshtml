@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Timesheet";
+}
+
+@using System.Data
+@using System.Data.SqlClient
+@model TimesheetManagement.Models.TimesheetManagementModel
+@{
+    ViewBag.Title = "UCreate";
+    Layout = "~/Views/_IndexLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    @*<link href="~/Content/css/Site.css" rel="stylesheet" />*@
+    <link href="~/Content/css/userpage.css" rel="stylesheet" />
+    @*<link href="~/Content/css/StyleSheet.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap10.css" rel="stylesheet" />
+    <title>Timesheet Management</title>
+    <link href="~/Content/userpage.css" rel="stylesheet" />
+    <script src="~/Scripts/user.js"></script>
+    <script>
+        function timeConvert(n) {
+            var num = n;
+            var hours = (num / 60);
+            var rhours = Math.floor(hours);
+            var minutes = (hours - rhours) * 60;
+            var rminutes = Math.round(minutes);
+            return rhours + ":" + rminutes;
+
+        }
+
+        function updateTotal() {
+            const fromTime = document.getElementById('fromTime').value.split(":");
+            const toTime = document.getElementById('toTime').value.split(":");
+            const fr = (parseInt(fromTime[0]) * 60) + parseInt(fromTime[1]);
+            const to = (parseInt(toTime[0]) * 60) + parseInt(toTime[1]);
+            //document.getElementById('totalTime').value =
+            const x = timeConvert(to - fr);
+            if (x === x.replace('-', '')) {
+                document.getElementById('totalTime').value = x;
+            }
+            else {
+                alert("Please enter proper time!");
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @*<link rel="stylesheet" href="/resources/demos/style.css">*@
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script>$(function () { $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }); });</script>
+    <style>
+        .cancel {
+            width: 150px;
+            height: 55px;
+            padding: 15px 25px;
+            font-size: 24px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: red;
+            border: none;
+            border-radius: 15px;
+            margin-top: -52px;
+            margin-left: 10px;
+            position: fixed;
+        }
+
+            .cancel:hover {
+                text-decoration: none;
+            }
+    </style>
+
+</head>
+
+<body style="background-color:#f2f2f2">
+    <br>
+
+    <div class="main">
+        <div>
+            <h2>Time sheet</h2>
+            <div class="signup-content card">
+                <div class="signup-form card-body">
+                    <form class="register-form" id="register-form" method="post" action="@Url.Action("InsertRecord")">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label for="first_name" class="required">Vsts Ref</label>
+                                    @Html.TextBoxFor(Model => Model.vstsref, new { @placeholder = "Enter the vstsref", @class = "", @required = true, })
+                                </div>
+                                <div class="form-input">
+                                    <label for="last_name" class="required">Project Name</label><br>
+                                    @Html.DropDownListFor(Model => Model.projid, ViewBag.projectList as SelectList, "Select One", new { @required = true })
+                                </div>
+                                <div class="form-input">
+                                    <label for="company" class="required">From Time</label>
+                                    @Html.TextBoxFor(Model => Model.fortime, new { @placeholder = "Enter the from time", @class = "", @required = true, type = "time", @id = "fromTime" })
+                                </div>
+                                <div class="form-input">
+                                    <label for="email">Total Time</label>
+                                    @Html.TextBoxFor(Model => Model.totaltime, new { @class = "", @id = "totalTime" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-select">
+                                    <div class="label-flex">
+                                        <label for="meal_preference">Task Description</label>
+                                    </div>
+                                    @Html.TextBoxFor(Model => Model.taskdes, new { @placeholder = "Enter the task description" })
+                                </div>
+
+                                <div class="form-input">
+                                    <label for="chequeno" class="required">Date</label>
+                                    @Html.TextBoxFor(Model => Model.date, Model.date.ToShortDateString(), new { @placeholder = "Enter the project date", @class = "txtdate", @required = true, @id = "datepicker" })
+                                </div>
+                                <div class="form-input">
+                                    <label for="blank_name" class="required">To Time</label>
+                                    @Html.TextBoxFor(Model => Model.totime, new { @placeholder = "Enter the to time", @class = "", @required = true, type = "time", @id = "toTime", @onchange = "updateTotal()" })
+                                </div>
+                                <div class="form-input">
+                                    <label for="payable">Remarks</label>
+                                    @Html.TextBoxFor(Model => Model.totime, new { @placeholder = "Enter the remarks" })
+                                </div>
+                            </div>
+                        </div>
+                        @{
+                            if (ViewBag.date != null)
+                            {
+                                <div role="alert" class="alert alert-danger" style="text-align:center">@ViewBag.date</div>
+                            }
+                        }
+                        <div class="form-submit">
+                            <input type="submit" value="Submit" name="action" style="width:150px;height:55px;margin-left:400px;font-size:20px;background-color:blue;color:white;border-radius:15px;" />
+                            <a href="~/TimesheetManagement/Index" id="reset" class="cancel" style="background-color:red;color:white;font-size:20px;">Cancel</a>
+                            @*<input type="submit" class="submit" id="submit" value="Submit" name="action" />*@
+                            @*<input type="submit" id="reset" class="submit" value="Cancel" name="action" />*@
+
+                        </div>
+                        @Html.TextBoxFor(Model => Model.timesheetID, new { @type = "hidden" })
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @*<script>$("#datepicker").datepicker().datepicker("setDate", new Date());</script>*@
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model Timesheet_Management.Models.EMPModel
+
+@{
+    ViewBag.Title = "EditView";
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_IndexLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Insert</title>
+
+    <link href="~/Content/css/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap10.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script>$(function () { $("#datepicker").datepicker(); });</script>
+    <title>Employee</title>
+
+    <style>
+        .can {
+            color: white;
+            font-size: 24px;
+            width: 150px;
+            background-color: red;
+            border: 1px solid black;
+            border-radius: 15px;
+            padding: 15px 25px;
+            text-align: center;
+        }
+
+        .sub {
+            color: white;
+            font-size: 24px;
+            width: 150px;
+            background-color: #00f;
+            border: 1px solid black;
+            border-radius: 15px;
+            padding: 15px 25px;
+            text-align: center;
+        }
+
+        a:link,
+        a:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .label {
+            font-weight: 800;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+
+<body style="font-family: 'Times New Roman'">
+    <br />
+    <h1 style=" color:#f00; font-size: 32px; font-weight: 800; ">EMPLOYEE</h1>
+
+    <div class="content ml-2">
+        <form id="frmDetail" method="post" action="@Url.Action("AddEditPost")">
+            <div class="row">
+                <div class="col-6 half">
+                    <label class="text-dark label">Name<span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(Model => Model.Ename, new { @placeholder = "Enter the Employee's Name", @class = "", @required = true })
+                    <br>
+                    <br>
+
+                    <label class="text-dark label">Role<span class="text-danger">*</span></label>
+                    @Html.DropDownListFor(Model => Model.RID, ViewBag.roleList as SelectList, "-- Select One --", new { @required = true })
+                    <br>
+                    <br>
+
+                    <label class="text-dark label">Email<span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(Model => Model.Email, new { @placeholder = "Enter the Email", @class = "", @required = true })
+                    <br>
+                    <br>
+
+                    <label class="text-dark label">Address</label>
+                    @Html.TextBoxFor(Model => Model.Eaddr, new { @placeholder = "Enter the Address", @class = "" })
+                    <br>
+                    <br>
+
+
+                </div>
+                <div class="col-6 half">
+                    <label class="text-dark label">DOB<span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(Model => Model.Edob, Model.Edob.ToShortDateString(), new { @id = "datepicker", @required = true })
+                    <br>
+                    <br>
+
+                    <label class="text-dark label">Gender<span class="text-danger">*</span></label>
+                    @Html.DropDownListFor(Model => Model.Egend, ViewBag.genderList as SelectList, "-- Select One --", new { @required = true })
+                    <br>
+                    <br>
+
+                    <label class="text-dark label">Phone</label>
+                    @Html.TextBoxFor(Model => Model.Ephone, new { @placeholder = "Enter the Phone number", @class = "", @min = "0" })
+                    <br>
+                    <br>
+
+                    <label class="text-dark label">Password<span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(Model => Model.Epass, new { @type = "password", @placeholder = "Enter the Password", @class = "", @required = true })
+                    <br>
+                    <br>
+
+                </div>
+            </div>
+            @Html.TextBoxFor(Model => Model.EID, new { @type = "hidden", @required = true })
+
+
+            @{
+                if (ViewBag.role != null)
+                {
+                    <div class="alert alert-danger text-center" role="alert">@ViewBag.role</div>
+                }
+                if (ViewBag.email != null)
+                {
+                    <div class="alert alert-danger text-center" role="alert">@ViewBag.email</div>
+                }
+                if (ViewBag.dob != null)
+                {
+                    <div class="alert alert-danger text-center" role="alert">@ViewBag.dob</div>
+                }
+                if (ViewBag.gender != null)
+                {
+                    <div class="alert alert-danger text-center" role="alert">@ViewBag.gender</div>
+                }
+            }
+
+            <div class="text-center">
+                <input class="sub confirm w-25" type="submit" value="Submit" name="action" @*onclick="return confirm('Changes will be saved. Are you Sure?');"*@ />
+                <a href="~/Employee/Index" class="can confirm w-25" @*onclick="return confirm('Changes will not be saved. Are you Sure?');"*@>Cancel</a>
+            </div>
+        </form>
+
+    </div>
+    @*<script>$("#datepicker").datepicker().datepicker("setDate", new Date());</script>*@
+</body>
+
+</html>

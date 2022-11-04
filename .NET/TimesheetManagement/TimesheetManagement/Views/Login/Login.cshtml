@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_LoginLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeSlotManagement</title>
+    <link rel="stylesheet" href="LoginStyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="content">
+                <h2 class="rainbow-text">Login</h2><br>
+                <form action="Success" method="post">
+                    <div class="agile-field-txt">
+                        <input type="text" name="UserName" placeholder="Email" required="" />
+                    </div>
+                    <div class="agile-field-txt">
+                        <input type="password" name="Password" placeholder="******" required="" id="myInput" /><br><br>
+                        
+                    <span style="color:orangered">@ViewBag.Message</span>
+                    </div>
+                    <div>
+                        <button class="glow-on-hover" type="submit">Login</button>
+                    </div>
+                    <div class="w3ls-bot"><a href="ForgetPassword">Forget Password</a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Scripts/vanilla-tilt.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 3,
+            speed: 100,
+            glare: true,
+            "max-glare": 0.2
+        });
+        
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,222 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+@{ ViewBag.Title = "EmpPro";
+    Layout = "~/Views/_IndexLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Insert</title>
+    <style>
+
+
+
+        body {
+            background-color: #f2f2f2;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            font-family: 'Times New Roman';
+        }
+
+        .content2 {
+            float: left;
+            width: 1200px;
+            height: 440px;
+            background: white;
+            color: #fff;
+            top: 58%;
+            left: 48%;
+            position: fixed;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 30px 30px;
+            display: inline-block;
+            color: white;
+            text-align: center;
+            margin-left: 40px;
+            border-radius: 15px;
+            box-shadow: 5px 10px lightgrey;
+        }
+        input, select {
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid transparent;
+            padding: 14px 20px;
+            font-size: 20px;
+            padding-left: 2px;
+            width: 100%;
+            position:relative;
+        }
+        .select-list {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 47px;
+        }
+
+        form {
+            padding-left: 200px;
+            padding-top: 100px;
+            font-size: 20px;
+        }
+        label2 {
+            /* font-size: 18px;
+            color:red;*/
+            font-family: inherit;
+            width: 40%;
+            border: 0;
+            outline: 0;
+            font-size: 1.6rem;
+            color: black;
+            padding: 7px 0;
+            background: transparent;
+            font-weight: bold;
+            transition: border-color 0.2s;
+            border-width: 0px 0px 1px 0px;
+            float: left;
+            margin-left: -50px;
+            margin-top: -30px;
+        }
+
+        .confirm {
+            width: 150px;
+            height: 55px;
+            margin-left: 70px;
+        }
+
+            .confirm [type=submit] {
+                padding: 15px 25px;
+                font-size: 24px;
+                text-align: center;
+                cursor: pointer;
+                outline: none;
+                color: #fff;
+                background-color: blue;
+                border: none;
+                border-radius: 15px;
+                margin-top: 50px;
+                margin-left: 250px;
+            }
+
+            .confirm:hover {
+                color: yellow;
+            }
+
+        .butt {
+            padding-right: 180px;
+            padding-bottom: 80px;
+        }
+        label1 {
+            /* font-size: 19px;
+            color:darkgreen;*/
+            font-size: 20px;
+            margin-left: -50px;
+            color: black;
+            float: left;
+            font-weight: bold;
+            margin-top: -50px;
+        }
+        .index {
+            background-color: red;
+            width: 90px;
+            color: white;
+            border-radius: 15px;
+            font-size: 20px;
+            padding: 16px 50px;
+            width: 150px;
+            height: 55px;
+            cursor: pointer;
+            margin-left:50px;
+        }
+        .one{
+            margin-left:-110px;
+            width:370px;
+        }
+        .two{
+            margin-left:-30px;
+            width:370px;
+        }
+        .three{
+            margin-left:-90px;
+            width:370px;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="content">
+                @{ if (@ViewBag.message != "Edit")
+                    {
+        <h1 style="color:red">EMPLOYEE PROJECT MAPPING</h1><br />
+                        <div class="content2">
+
+                            <form id="frmDetail" method="post" action="@Url.Action("InsertRecord")">
+                               <div class="for">
+                                    <label1 style="padding-left:30px;margin-left:-80px;">Project Name</label1>
+                                    <label1 style="padding-left:250px;margin-left:180px;">Employee Name</label1><br /><br>
+                                    <label2 style="padding-left:30px;border-bottom: 2px solid black;text-align:left;margin-top:-60px;"> @Html.DropDownList("projname", ViewBag.projectList as SelectList, "Select One",new { @required = true,@class="two" })</label2>
+                                    <label2 style="padding-left:110px;border-bottom: 2px solid black;margin-left:100px;text-align:left;margin-top:-62px;">
+                                        @Html.DropDownList("empname", ViewBag.employeeList as SelectList, "Select One", new { @required = true , @class="one"})
+                                    </label2><br />
+                                    <br>
+                                    <br>
+
+                                    <br>
+
+                                    @{ if (ViewBag.message != null)
+                                        {
+                        <div class="alert alert-danger" role="alert">@ViewBag.message</div> } }
+                                    <div class="butt">
+                                        <input class="confirm" type="submit" value="Submit" name="action" style="background-color: blue;width: 90px;color: white;border-radius: 15px;font-size: 20px;padding: 15px 25px;width: 150px;height: 55px;cursor:pointer;margin-left:-10px;" />
+                                        @*<input class="confirm" type="submit" value="Cancel" name="action" style="background-color: red;width: 90px;color: white;border-radius: 15px; font-size: 20px;padding: 15px 25px;width: 150px;height: 55px;cursor:pointer;" />*@
+                                        @Html.ActionLink("Cancel","Index","EmpPro",null,new { @class="index"})
+                                    </div>
+                                </div>
+                            </form>
+                        </div> }
+
+
+                    else
+                    {
+        <h1 style="color:red">EMPLOYEE PROJECT MAPPING</h1>
+                        <div class="content2">
+                            <form id="frmDetail" method="post" action="@Url.Action("InsertRecord")">
+                                <label1 style="padding-left:30px;margin-left:-80px;">Project Name</label1>
+                                <label1 style="padding-left:250px;margin-left:180px;">Employee Name</label1><br />
+                                <label2 style="margin-top:-1px;border-bottom: 2px solid black;margin-top:-20px;"> @Html.DropDownList("projname", ViewBag.projectList as SelectList)</label2><br>
+                                <label2 style="padding-left:90px;border-bottom: 2px solid black;margin-left:100px;text-align:left;margin-top:-42px"> @Html.DropDownList("empname", ViewBag.employeeList as SelectList,new { @class="three"})</label2>
+
+
+                                <br><br> <br><br><br>
+                                <div class="butt">
+                                    <input class="confirm" type="submit" value="Submit" name="action" style="background-color: blue;color: white; border-radius: 15px;font-size: 20px;padding: 15px 25px;width: 150px;height: 55px;cursor:pointer;margin-left:-10px" />
+                                    @*<input class="confirm" type="submit" value="Cancel" name="action" style="background-color: red;color: white;border-radius: 15px;font-size: 20px;padding: 15px 25px;width: 150px;height: 55px;cursor:pointer;" />*@
+                                      @Html.ActionLink("Cancel","Index","EmpPro",null,new { @class="index"})
+                                    <input type="hidden" name="empproID" value="@Model.Rows[0]["emppromap_id"]" />
+                                </div>
+                            </form>
+                        </div>} }
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+</html>

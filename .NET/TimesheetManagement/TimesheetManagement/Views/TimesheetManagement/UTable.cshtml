@@ -1,0 +1,136 @@
+﻿@using System.Data
+@using System.Data.SqlClient
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "UTable";
+    Layout = "~/Views/_IndexLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    @*<link href="~/Content/css/Table.css" rel="stylesheet" />*@
+ <link href="~/Content/bootstrap10.css" rel="stylesheet" />
+    <script src="~/Scripts/user.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>User home</title>
+    <style>
+        thead {
+            text-align: center;
+            text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 0px -4px 10px rgba(255,255,255,0.3);
+            background-color: dimgray;
+            font-size: 20px;
+            font-display: block;
+            color: white;
+        }
+
+        tr {
+            text-align: center;
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+
+        tr:hover {
+            background-color: dimgrey;
+            cursor: pointer;
+        }
+
+
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+
+
+            tr:nth-child(even):hover {
+                background-color: dimgrey;
+                cursor: pointer;
+            }
+
+        .tab {
+            text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 0px -4px 10px rgba(255,255,255,0.3);
+        }
+
+        .lin {
+            float: right;
+            font-size: 30px;
+            left: 1250px;
+            position: fixed;
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body style="background-color:#f2f2f2;font-family:'Times New Roman'">
+   <br>
+    <div >
+        <form method="post" name="Display">
+            <div class="row-1">
+                <h1 class="ml2" style="text-align: left;font-size:30px;">TIMESHEET LIST</h1>
+                <span style="float: right;font-size: 30px;color:cornflowerblue;margin-left: 600px;text-shadow: 3px 3px 20px #ff99cc,-2px 1px 30px #ff99cc;">  @Html.ActionLink("Add New Record", "SheetInsert")</span>
+            </div>
+            <br><br><br>
+            <div >
+                @{
+                    if (Model.Rows.Count > 0)
+                    {<br>
+                        
+                                <table class="table table-striped table-hover bg-light text-dark" border="1" align="center" style="background-color: lightgray;font-size: 18px;margin-left: 10px;box-shadow: 5px 10px lightgray;" width="97%"height="100%">
+                                    <thead class="bg-dark text-white text-center" style="background-color:black;text-align:center">
+                                        <tr>
+                                            <th class="text-left">VSTS REF</th>
+                                            <th class="text-left">TASK DESCRIPTION</th>
+                                            <th class="text-left">PROJECT NAME</th>
+                                            <th class="text-left">DATE</th>
+                                            <th class="text-left">FROM TIME</th>
+                                            <th class="text-left">TO TIME</th>
+                                            <th class="text-left">TOTAL TIME</th>
+                                            <th class="text-left">REMARKS</th>
+                                            <th class="text-center" colspan="2">ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-hover">
+
+                                        @foreach (DataRow dr in Model.Rows)
+                                        {
+                                            <tr>
+                                                <td class="text-left">@dr["vstsref"].ToString() </td>
+                                                <td class="text-left">@dr["task_des"].ToString() </td>
+                                                <td class="text-left">@dr["ProjectName"].ToString() </td>
+                                                <td class="text-left">@Convert.ToDateTime(@dr["project_date"]).ToShortDateString()</td>
+                                                <td class="text-left">@dr["frm_time"].ToString() </td>
+                                                <td class="text-left">@dr["to_time"].ToString() </td>
+                                                <td class="text-left">@dr["tot_time"].ToString() </td>
+                                                <td class="text-left">@dr["ts_remarks"].ToString() </td>
+                                                <td class="text-left">@Html.ActionLink("Edit ", "SheetInsert", new { timesheetID = dr["timesheet_id"].ToString(), projid = dr["ProjectId"] }, new { @class = "Tab" })</td>
+                                                <td class="text-left">@Html.ActionLink("Delete", "Delete", new { timesheetID = dr["timesheet_id"].ToString() }, new { onclick = "return confirm('Confirm Delete?');" })</td>
+                                            </tr>
+
+                                        }
+                                    </tbody>
+                                </table>
+                        <br />
+                    }
+                    else
+                    {
+                        <span> No records found!!</span>
+                    }
+                }
+                <br />
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

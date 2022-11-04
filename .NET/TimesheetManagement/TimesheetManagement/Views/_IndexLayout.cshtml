@@ -1,0 +1,163 @@
+﻿@{
+    var form_ids = (List<string>)@HttpContext.Current.Session["roleid"];
+    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+          rel="stylesheet" />
+    <link href="~/Content/css/Layout.css" rel="stylesheet" />
+    <link href="~/Content/css/StyleSheet.css" rel="stylesheet" />
+
+    <!-- ===== CSS ===== -->
+    <style>
+        .dropbtn {
+            background-color: #e91e63;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #e91e63;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+
+    <title>TimeSheetManagement</title>
+</head>
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header__toggle">
+            <i class="bx bx-menu" id="header-toggle"></i>
+            <label>GP-TMS</label>
+        </div>
+
+
+
+        <div style="margin-left:-50px;" class="dropdown" style="float:right;">
+            <button class="dropbtn" style="margin-left:0px;">
+                <img src="~/Content/user.png" style="width:40px;height:40px;border-radius:50px;" />
+                <img src="~/Content/caret-down-solid.svg" style="width:40px;height:40px;border:0px;" />
+            </button>
+            <div class="dropdown-content">
+                <a href="../Dashboard/ChangePasswordIndex">Change Password</a>
+                <a href="../Dashboard/Logout">Logout</a>
+            </div>
+        </div>
+
+
+
+    </header>
+
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav__logo">
+
+                    <span class="nav__logo-name"></span>
+                </a>
+                <div class="nav__list">
+                    @if (form_ids.Contains("1"))
+                    {
+                    <a href="../Dashboard/Index" class="nav__link active">
+                        <i class="bx bx-grid-alt nav__icon"></i>
+                        <span class="nav__name">Dashboard</span>
+                    </a>
+
+                    }
+                     @if (form_ids.Contains("2"))
+                     {
+                        <a href="../Role/Index" class="nav__link">
+                            <i class="bx bx-bookmark nav__icon"></i>
+                            <span class="nav__name">Role</span>
+                        </a>
+                     }
+                     @if (form_ids.Contains("7"))
+                     {
+                    <a href="../Form/Index" class="nav__link">
+                        <i class="bx bx-box nav__icon"></i>
+                        <span class="nav__name">Form access details</span>
+                    </a>
+                     }
+                     @if (form_ids.Contains("3"))
+                     {
+
+                    <a href="../Project/Index" class="nav__link">
+                        <i class="bx bx-message-square-detail nav__icon"></i>
+                        <span class="nav__name">Project</span>
+                    </a>
+                     }
+                      @if (form_ids.Contains("4"))
+                      {
+
+                    <a href="../Employee/Index" class="nav__link">
+                        <i class="bx bx-user nav__icon "></i>
+                        <span class="nav__name">Employee</span>
+                    </a>
+                      }
+                       @if (form_ids.Contains("5"))
+                       {
+
+                    <a href="../EmpPro/Index" class="nav__link">
+                        <i class="bx bx-folder nav__icon"></i>
+                        <span class="nav__name">Emp - Pro Mapping</span>
+                    </a>
+                       }
+                    @if (form_ids.Contains("6"))
+                    {
+
+                    <a href="../TimesheetManagement/Index" class="nav__link">
+                        <i class="bx bx-bar-chart-alt-2 nav__icon"></i>
+                        <span class="nav__name">Timesheet Management</span>
+                    </a>
+                    }
+                </div>
+            </div>
+
+            <a href="../Dashboard/Logout" class="nav__link">
+                <i class="bx bx-log-out nav__icon"></i>
+                <span class="nav__name">Log Out</span>
+            </a>
+        </nav>
+    </div>
+    <script src="~/Scripts/main.js"></script>
+    <div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
