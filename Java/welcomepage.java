@@ -3,7 +3,7 @@ import java.awt.*;
 import java.sql.*;
 import java.awt.event.*;
 
-class welto implements ActionListener
+class welcomepage implements ActionListener
 {
 		JFrame f1=new JFrame("Welcome");
 		JLabel l=new JLabel("WELCOME TO MITTECH BANK OF INDIA");
@@ -11,7 +11,7 @@ class welto implements ActionListener
 		JButton b2=new JButton("Loan Section");
 		JButton b3=new JButton("Customer Details");
 
-	welto()
+	welcomepage()
 	{
 
  		f1.setLayout(null);
@@ -38,7 +38,7 @@ class welto implements ActionListener
 	}
 	public static void main(String[] args) 
 	{
-		new welto();
+		new welcomepage();
 	}
 	public void actionPerformed(ActionEvent a)
 	{

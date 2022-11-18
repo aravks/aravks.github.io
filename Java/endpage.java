@@ -3,11 +3,11 @@ import java.awt.*;
 import java.sql.*;
 import java.awt.event.*;
 
-class sam
+class endpage
 {
 	JFrame f= new JFrame();
 	JLabel l1;
-	sam()
+	endpage()
 	{
 
 	f.setSize(1000,800);
@@ -23,7 +23,7 @@ class sam
 	}
 	public static void main(String ar[])
 	{
-		new sam();
+		new endpage();
 	}
 	
 	

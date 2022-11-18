@@ -3,14 +3,14 @@ import java.awt.*;
 import java.sql.*;
 import java.awt.event.*;
 
-class loan implements ActionListener
+class loanpage implements ActionListener
 {
 	JFrame f;
 	JLabel l,l1,l2,l3;
 	JTextField t;
 	JButton b,b1;
 	Choice ch;
-	loan()
+	loanpage()
 	{
 		f=new JFrame("Loan section");
 		l=new JLabel("LOAN SECTION");
@@ -53,13 +53,13 @@ class loan implements ActionListener
 		}
 	     public static void main(String ar[])
 		{
-				new loan();
+				new loanpage();
 		}
 		public void actionPerformed(ActionEvent ae)
 		{
 			if(ae.getSource()==b)
 			{
-				new welto();
+				new welcomepage();
 				f.dispose();
 			}
 		}
