@@ -1,0 +1,221 @@
+body {
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+.navbar .nav-link {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+/*------------------------------------------*/
+/*-----------------HEADING------------------*/
+/*------------------------------------------*/
+
+h1 {
+  font-weight: 300;
+}
+
+h5 {
+  font-weight: 900;
+}
+
+/*------------------------------------------*/
+/*------------------CARD--------------------*/
+/*------------------------------------------*/
+.card {
+  transition: all 0.5s ease;
+}
+.card-header,
+.card-footer {
+  text-align: center;
+}
+
+.card:hover,
+.card:hover .media-body {
+  color: #fff;
+  border: 1px solid #fff;
+  background: #272822;
+}
+
+.card:hover .card-header,
+.card-body {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.247);
+}
+
+.links {
+  color: #000;
+  text-decoration: none !important;
+}
+
+.card-body {
+  font-weight: 300;
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/*------------------------------------------*/
+/*---------------PAGE HEADER----------------*/
+/*------------------------------------------*/
+
+#page-header1 {
+  position: relative;
+  height: 200px;
+  background: url('../img/work8.jpg');
+  background-position: bottom;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
+
+#page-header2 {
+  position: relative;
+  height: 200px;
+  background: url('../img/goal.jpg');
+  background-position: center bottom;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
+
+#page-header3 {
+  position: relative;
+  height: 200px;
+  background: url('../img/story5.jpg');
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
+
+#page-header4 {
+  position: relative;
+  height: 200px;
+  background: url('../img/interest.jpg');
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
+
+#page-header5 {
+  position: relative;
+  height: 200px;
+  background: url('../img/inspiration.jpg');
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
+
+.media {
+  transition: all 0.5s;
+}
+
+.media:hover {
+  color: #fff;
+  background: #272822;
+  border-radius: 100px;
+}
+
+.goal-img {
+  height: 100%;
+  width: 92px;
+  border-radius: 100px;
+}
+
+.int-img {
+  height: 100%;
+  width: 250px;
+  border-radius: 100px 0 0 100px;
+}
+
+.int-row {
+  background: #eee;
+  border-radius: 100px;
+}
+
+.card:hover .contact a {
+  color: #fff;
+}
+
+.contact h5 {
+  font-weight: 400;
+}
+
+.facebook:hover {
+  background: #3b5998;
+  border-radius: 5px;
+}
+
+.instagram:hover {
+  background: #cd486b;
+  border-radius: 5px;
+}
+
+.linkedin:hover {
+  background: #007bb5;
+  border-radius: 5px;
+}
+
+.github:hover {
+  background: #000;
+  border-radius: 5px;
+}
+
+.twitter:hover {
+  background: #1dcaff;
+  border-radius: 5px;
+}
+
+.website:hover {
+  background: #ff0000;
+  border-radius: 5px;
+}
+
+span {
+  margin-left: 10px;
+  vertical-align: 35%;
+}
+
+.img-certi {
+  border: #000 solid 1px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.img-certi:hover {
+  opacity: 1;
+  transform: scale(0.9);
+}
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/*-------------------MEDIA--------------------*/
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+
+@media only screen and (max-width: 480px) {
+  .int-img {
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .int-text {
+    font-size: 15px;
+  }
+}

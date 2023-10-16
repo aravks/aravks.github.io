@@ -3,140 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous" />
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400|Special+Elite&display=swap" rel="stylesheet">
-
-
+    <!-- Latest compiled and minified CSS -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Aravind KS</title>
+    <link rel="stylesheet" href="/index.css" />
+    <title>Document</title>
   </head>
-
   <body>
-
-    <div class="navbar navbar-expand-sm navbar-dark bg-success">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a href="https://aravks.github.io" class="navbar-brand">Aravind KS</a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a href="./" class="nav-link">Works</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="goals/" class="nav-link">Goals</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="interests/" class="nav-link">Interests</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="inspirations/" class="nav-link">Inspirations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact/" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-            </div>
+          <a class="navbar-brand">
+            <img id="logo" src="./img/logo.png" alt="logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/experience">Experience</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/projects">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/skills">Skills</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/education">Education</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/certificates">Certificates</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#blogs">Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </div>
-
-    
-    <!-- MENU -->
-    <header id="page-header1" class="mb-5">
-        <div class="dark-overlay">
-            <div class="container">    
-                <div class="row">
-                    <div class="col-md-6 m-auto text-center p-5">
-                        <h1>My Works</h1>
-                        <p style="font-weight:300;">Here comes my works that I had accomplished.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    
-    <section>
+      </nav>
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 mb-5">
-            <a class="links" href="https://aravks.github.io/pro1/">
-            <div class="card">
-              <img class="card-img-top img-fluid align-self-center" src="img/omnifood.png">
-              <div class="card-header">
-                <h5>Omnifood</h5>
-              </div>
-              <div class="card-body">
-                <p class="card-text">This was my first project. A frontend work made for a food service company. Boostrap included HTML , CSS and jQuery.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">01 Aug 19</small>
-              </div>
-            </div>
-            </a>
-          </div>
-          <div class="col-sm-6 mb-5">
-            <a class="links" href="https://aravks.github.io/pro2/">
-            <div class="card">
-              <img class="card-img-top img-fluid align-self-center" src="img/glossom.png">
-              <div class="card-header">
-                  <h5>Glossom</h5>
-                </div>
-              <div class="card-body text-justify">
-                A frontend multipage site made for a random company. Bootstrap included HTML , CSS and jQuery. Added Carousel slider.
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">01 Aug 19</small>
-              </div>
-            </div>
-            </a>
-          </div>
+          <h1
+            class="d-flex justify-content-center align-items-center hero-text-box"
+          >
+            <img
+              src="./img/Aravind.jpg"
+              class="img-dp"
+              width="200"
+              height="200"
+            />
+            <span class="text-main">
+              <span> Hello! I'm Aravind.</span><br />
+
+              <span class="text-animation">I am a Full Stack Developer.</span>
+            </span>
+          </h1>
         </div>
       </div>
-    </section>
-
+    </header>
     <footer id="main-footer" class="bg-dark text-white text-center p-4">
       <div class="container">
         <div class="row">
           <div class="col">
-            <p>A creation by Aravind KS</p>
-            <hr style="background: #fff;">
-            <p>Copright &copy; 2019</p>
+            <p>Developed by Aravind K S</p>
+            <hr style="background: #fff" />
+            <p>Copright &copy; <year id="year"></year>.</p>
           </div>
         </div>
       </div>
     </footer>
-
     <script
-      src="http://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/script.js"></script>
-    
-    <script>
-    //Get the current year for the copyright
-    $('#year').text(new Date().getFullYear());
-    </script>
+    <script src="/index.js"></script>
   </body>
 </html>

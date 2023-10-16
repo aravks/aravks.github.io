@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('./img/bg.jpg');
+  background-size: cover;
+  background-position: left;
+  background-attachment: fixed;
+  height: 100vh;
+}
+section {
+  height: 100vh;
+}
+.navbar .nav-link {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+.hero-text-box {
+  font-weight: bold;
+  font-family: 'Anonymous Pro', monospace;
+  color: aliceblue;
+  position: absolute;
+  width: 1140px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.text-main {
+  width: 100%;
+}
+span {
+  letter-spacing: 7px;
+}
+span .text-animation {
+  display: block;
+  position: relative;
+  color: hsl(0, 0%, 68%);
+  letter-spacing: 7px;
+  overflow: hidden;
+  border-right: 2px solid hsl(0, 0%, 80%);
+  white-space: nowrap;
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+    blinkTextCursor 500ms infinite;
+}
+
+.img-dp {
+  padding: 30px;
+  opacity: 0.8;
+  border-radius: 50px;
+  transform: scale(1.15);
+}
+
+.img-dp:hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* ANIMATION */
+
+@keyframes typewriter {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 820px;
+  }
+}
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: hsl(0, 0%, 80%);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
