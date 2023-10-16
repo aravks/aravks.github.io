@@ -38,6 +38,7 @@ span {
 }
 span .text-animation {
   display: block;
+  font-size: 20px;
   position: relative;
   color: hsl(0, 0%, 68%);
   letter-spacing: 7px;
@@ -76,5 +77,15 @@ span .text-animation {
   }
   to {
     border-right-color: transparent;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #logo {
+    width: 200px;
+    height: 30px;
+  }
+  span .text-animation {
+    display: none;
   }
 }
