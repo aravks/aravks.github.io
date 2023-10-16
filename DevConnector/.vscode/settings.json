@@ -1,0 +1,7 @@
+{
+  "prettier.cssEnable": ["css", "less", "scss", "postcss"],
+  "prettier.typescriptEnable": ["typescript", "typescriptreact"],
+  "prettier.jsonEnable": ["json"],
+  "prettier.graphqlEnable": ["graphql"],
+  "editor.formatOnSave": true
+}
